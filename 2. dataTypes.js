@@ -60,4 +60,4 @@ function greet() {
     console.log("Hello");
 }
 
-console.log(typeof greet); //function
+console.log(typeof greet); //function 
