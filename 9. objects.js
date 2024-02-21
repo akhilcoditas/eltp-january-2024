@@ -1,43 +1,77 @@
-const cricketPlayer = {
+const badmintonPlayer = {
     name: "Arjun Kesharwani",
-    country: "Germany",
+    country: "India",
     gender: "Male",
-    skills: ["batsman", "keeper"],
-    spouse: {
-        firstNameFirstCharcter: "C",
-        lastNameFirstCharcter: "S"
+    lastFiveMatches: ["W", "W", "W", "W", "L"],
+    racketDetails: {
+        company: "Coditas",
+        balance: "9000000000",
+        isFlexible: false
     },
-    shot: () => {
-        console.log("cover drive")
+    smash: () => {
+        console.log(`${this.name} smashes the shuttle`);
+    },
+    drop: function() {
+        // this points to the badmintonPlayer object
+        console.log(`the player from ${this.country} has a wonderful drop`);
     }
-}
+};
 
-// Accesing object keys
-cricketPlayer.name //Arjun...
-// cricketPlayer.spouse["last Name"]
-cricketPlayer["name"] //Arjun....
+// access a property
+badmintonPlayer.lastFiveMatches; // ["W", "W", "W", "W", "L"]
+badmintonPlayer.lastFiveMatches[2]; // "W"
+badmintonPlayer["country"]; // spain
 
-const key = "country";
-cricketPlayer[key] //Germany
-cricketPlayer.key //undefined
+const key = "gender";
+badmintonPlayer[key]; // female
+badmintonPlayer.key; // undefined
 
-Object.keys(cricketPlayer); //[keys array]
-Object.values(cricketPlayer); // [values array]
-Object.entries(cricketPlayer); // [[key, value], [key,value]]
+// modify a property
+badmintonPlayer.lastFiveMatches = ["L", "L", "W", "W", "W"];
+badmintonPlayer.lastFiveMatches.push("W");
 
-for(const [key, value] of Object.entries(cricketPlayer)) {
-    console.log(`${key} ${value}`);
-}
-cricketPlayer.hasOwnProperty("papa") //false
-cricketPlayer.score = 90 //
+// adding a property
+badmintonPlayer.shoes = "abcd";
+badmintonPlayer["sponsor"] = "Nike";
+
+const newKey = "stringType";
+badmintonPlayer[newKey] = "hybrid";
+
+// calling methods
+badmintonPlayer.smash; // reference of the function
+badmintonPlayer.smash(); // invoking a function
+badmintonPlayer.drop();
+
+
+// Object class
+// static method
+
+// keys => return an array of keys (stringified) as elements
+Object.keys(badmintonPlayer); // ["name", "country", "gender"....];
+
+// hasOwnProperty => check whether the key exists or not
+// returns a boolean
+
+badmintonPlayer.hasOwnProperty("qwerty"); // false
+
 
 // destructuring
+const computer = {
+    brand: "Lenovo",
+    processor: "i5",
+    ram: "16 GB"
+}
+// const brand = computer.brand;
+// const processor = computer["processor"];
+// const ram = computer.ram;
 
-const { gender, name: fullName, ...restProps } = cricketPlayer;
+const { ram, brand, processor } = computer;
+const { ram: ramName } = computer;
+const { ram: power, ...processorAndBrand } = computer;
 
-console.log(gender, fullName) //Male Arjun...
+// cloning
+const computerClone = computer;
+// reference is copied in computer clone
 
-const person = cricketPlayer; //cloning
-
-const person2 = {...cricketPlayer} //shallow clone
-
+// shallow clone
+const compClone = { ...computer };
