@@ -7,10 +7,14 @@ const resolveAfterTwoSeconds = async() => {
 }
 
 const asyncCall = async() => {
-    console.log("Calling resolveAfter2Seconds");
-    const result = await resolveAfterTwoSeconds();
-    console.log(result);
-    console.log("Async function execution continues after await");
+    try {
+        console.log("Calling resolveAfter2Seconds");
+        const result = await resolveAfterTwoSeconds();
+        console.log(result);
+        console.log("Async function execution continues after await");
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 console.log("Before Calling async function");
